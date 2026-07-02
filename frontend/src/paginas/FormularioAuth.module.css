@@ -1,0 +1,98 @@
+.pagina {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.formulario {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 40px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.encabezado {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.icono {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto 16px;
+}
+
+.titulo {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.subtitulo {
+  font-size: 14px;
+  color: var(--gris-texto);
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.campo input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--gris-medio);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.campo input:focus {
+  border-color: var(--azul);
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.exito {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.pie {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: var(--gris-texto);
+}
+
+.pie a {
+  color: var(--azul);
+  font-weight: 500;
+}

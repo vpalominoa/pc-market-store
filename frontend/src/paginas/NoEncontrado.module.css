@@ -1,0 +1,22 @@
+.pagina {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  padding: 40px;
+}
+
+.codigo {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.mensaje {
+  font-size: 16px;
+  color: var(--gris-texto);
+  margin-bottom: 12px;
+}

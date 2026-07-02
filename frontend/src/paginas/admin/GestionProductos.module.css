@@ -1,0 +1,296 @@
+.pagina {
+  padding: 40px 0 80px;
+}
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.titulo {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  padding-top: 25px;
+}
+
+.subtitulo {
+  font-size: 14px;
+  color: var(--gris-texto);
+}
+
+.exito {
+  background: #d1fae5;
+  color: #065f46;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.barraBusqueda {
+  margin-bottom: 16px;
+}
+
+.inputBusqueda {
+  width: 100%;
+  max-width: 360px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--gris-medio);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.inputBusqueda:focus {
+  border-color: var(--azul);
+}
+
+.tablaContenedor {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  overflow: auto;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.tabla th {
+  text-align: left;
+  padding: 14px 20px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris-texto);
+  background: var(--gris-claro);
+  border-bottom: 1px solid var(--gris-medio);
+  white-space: nowrap;
+}
+
+.tabla td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gris-medio);
+  vertical-align: middle;
+}
+
+.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+.tabla tr:hover td {
+  background: var(--gris-claro);
+}
+
+.filaInactiva td {
+  opacity: 0.5;
+}
+
+.nombreProducto {
+  font-weight: 600;
+  max-width: 280px;
+}
+
+.enStock   { color: #16a34a; font-weight: 600; }
+.sinStock  { color: var(--rojo); font-weight: 600; }
+.pocoStock { color: #d97706; font-weight: 600; }
+
+.activo   { color: #16a34a; font-weight: 500; font-size: 13px; }
+.inactivo { color: var(--gris-texto); font-weight: 500; font-size: 13px; }
+
+.acciones {
+  display: flex;
+  gap: 8px;
+}
+
+.btnEditar {
+  background: var(--azul-claro);
+  color: var(--azul);
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btnEditar:hover {
+  background: rgba(0, 124, 188, 0.2);
+}
+
+.btnDesactivar {
+  background: #fee2e2;
+  color: #991b1b;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.btnDesactivar:hover {
+  background: #fecaca;
+}
+
+.vacio {
+  text-align: center;
+  padding: 48px;
+  color: var(--gris-texto);
+  font-size: 14px;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 24px;
+}
+
+.modal {
+  background: var(--blanco);
+  border-radius: 14px;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modalEncabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px 0;
+}
+
+.modalTitulo {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btnCerrar {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--gris-texto);
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.btnCerrar:hover {
+  background: var(--gris-claro);
+}
+
+.formulario {
+  padding: 24px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.campoCompleto {
+  grid-column: span 2;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  padding: 9px 12px;
+  border: 1.5px solid var(--gris-medio);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  border-color: var(--azul);
+}
+
+.textareaCode {
+  font-family: monospace;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.hint {
+  font-weight: 400;
+  color: var(--gris-texto);
+  font-size: 12px;
+}
+
+.modalAcciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid var(--gris-medio);
+}
+
+.estado {
+  text-align: center;
+  padding: 80px;
+  color: var(--gris-texto);
+}
+
+.btnOrden {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris-texto);
+  padding: 0;
+  font-family: var(--fuente);
+}
+
+.btnOrdenActivo {
+  color: var(--azul);
+}

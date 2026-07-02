@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --azul: #007CBC;
+  --azul-oscuro: #005f99;
+  --azul-claro: rgba(0, 124, 188, 0.1);
+  --blanco: #ffffff;
+  --gris-claro: #f5f6f8;
+  --gris-medio: #e2e8f0;
+  --gris-texto: #64748b;
+  --negro: #0f172a;
+  --rojo: #ef4444;
+  --verde: #22c55e;
+  --sombra: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --sombra-hover: 0 8px 32px rgba(0, 124, 188, 0.15);
+  --radio: 10px;
+  --fuente: 'Inter', system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente);
+  background: var(--gris-claro);
+  color: var(--negro);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--fuente);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input, select, textarea {
+  font-family: var(--fuente);
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.btn-primario {
+  background: var(--azul);
+  color: var(--blanco);
+  border: none;
+  padding: 10px 24px;
+  border-radius: var(--radio);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-primario:hover:not(:disabled) {
+  background: var(--azul-oscuro);
+  transform: translateY(-1px);
+}
+
+.btn-secundario {
+  background: transparent;
+  color: var(--azul);
+  border: 1.5px solid var(--azul);
+  padding: 10px 24px;
+  border-radius: var(--radio);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.btn-secundario:hover:not(:disabled) {
+  background: var(--azul-claro);
+}
+
+.etiqueta-estado {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.estado-pendiente { background: #fef3c7; color: #92400e; }
+.estado-pagado    { background: #d1fae5; color: #065f46; }
+.estado-enviado   { background: #dbeafe; color: #1e40af; }
+.estado-entregado { background: #d1fae5; color: #065f46; }
+.estado-cancelado { background: #fee2e2; color: #991b1b; }
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}

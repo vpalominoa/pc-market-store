@@ -1,0 +1,151 @@
+.pagina {
+  padding: 48px 0 80px;
+  max-width: 900px;
+}
+
+.titulo {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
+  align-items: start;
+}
+
+.productos {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 28px;
+}
+
+.subtitulo {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.itemImg {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.itemNombre {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.itemCantidad {
+  font-size: 13px;
+  color: var(--gris-texto);
+}
+
+.itemPrecio {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul);
+}
+
+.panel {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 24px;
+  position: sticky;
+  top: 84px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.linea {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--gris-texto);
+}
+
+.gratis { color: var(--verde); font-weight: 500; }
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: 700;
+  padding-top: 12px;
+  border-top: 1px solid var(--gris-medio);
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.metodoPago {
+  background: var(--gris-claro);
+  border-radius: 8px;
+  padding: 14px;
+  margin: 4px 0;
+}
+
+.metodoLabel {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gris-texto);
+  margin-bottom: 8px;
+}
+
+.metodoOpcion {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.btnCancelar {
+  background: none;
+  border: none;
+  color: var(--gris-texto);
+  font-size: 13px;
+  text-align: center;
+  padding: 8px;
+  transition: color 0.2s;
+}
+
+.btnCancelar:hover { color: var(--negro); }
+
+@media (max-width: 768px) {
+  .layout { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,118 @@
+.encabezado {
+  background: var(--azul);
+  color: var(--blanco);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 24px;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blanco);
+  white-space: nowrap;
+}
+
+.icono {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+}
+
+.enlace {
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 14px;
+  border-radius: var(--radio);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.enlace:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--blanco);
+}
+
+.acciones {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.bienvenida {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.botonCarrito {
+  position: relative;
+  font-size: 22px;
+  color: var(--blanco);
+  padding: 4px;
+}
+
+.badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  min-width: 18px;
+  height: 18px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+}
+
+.botonSalir {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--blanco);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: var(--radio);
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.botonSalir:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.enlaceAuth {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 14px;
+  transition: color 0.2s;
+}
+
+.enlaceAuth:hover {
+  color: var(--blanco);
+}
+
+@media (max-width: 768px) {
+  .nav { display: none; }
+  .bienvenida { display: none; }
+}

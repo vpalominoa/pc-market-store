@@ -1,0 +1,83 @@
+.hero {
+  background: var(--azul);
+  color: var(--blanco);
+  padding: 40px 0 40px;
+}
+
+.heroContenido {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+}
+
+.heroTitulo {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.heroSubtitulo {
+  font-size: 17px;
+  opacity: 0.88;
+  line-height: 1.6;
+}
+
+.seccion {
+  padding: 32px 0 5px;
+}
+
+.tituloSeccion {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.encabezadoSeccion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.verTodos {
+  font-size: 14px;
+  color: var(--azul);
+  font-weight: 500;
+}
+
+.gridCategorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.tarjetaCategoria {
+  background: var(--blanco);
+  border: 2px solid var(--gris-medio);
+  border-radius: var(--radio);
+  padding: 20px 16px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--negro);
+  transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.tarjetaCategoria:hover {
+  border-color: var(--azul);
+  color: var(--azul);
+  transform: translateY(-2px);
+}
+
+.gridProductos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.mensajeError {
+  color: var(--gris-texto);
+  text-align: center;
+  padding: 40px 0;
+}

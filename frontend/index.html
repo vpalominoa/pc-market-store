@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self';
+               style-src 'self' https://fonts.googleapis.com 'unsafe-inline';
+               font-src https://fonts.gstatic.com;
+               script-src 'self';
+               img-src 'self' data: https:;
+               connect-src 'self' http://localhost:3000;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>PC Market Store</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/principal.tsx"></script>
+  </body>
+</html>

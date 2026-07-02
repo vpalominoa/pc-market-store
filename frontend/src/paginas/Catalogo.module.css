@@ -1,0 +1,104 @@
+.pagina {
+  padding-top: 48px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  padding-top: 40px;
+  padding-bottom: 60px;
+  align-items: start;
+}
+
+.filtros {
+  background: var(--blanco);
+  border-radius: var(--radio);
+  padding: 24px;
+  box-shadow: var(--sombra);
+  position: sticky;
+  top: 84px;
+}
+
+.tituloFiltros {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.grupo {
+  margin-bottom: 24px;
+}
+
+.etiqueta {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gris-texto);
+  margin-bottom: 10px;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid var(--gris-medio);
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.input:focus, .select:focus {
+  border-color: var(--azul);
+}
+
+.listaFiltros {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.itemFiltro {
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.itemFiltro:hover {
+  background: var(--azul-claro);
+  color: var(--azul);
+}
+
+.itemFiltro.activo {
+  background: var(--azul);
+  color: var(--blanco);
+  font-weight: 500;
+}
+
+.resultados { min-height: 400px; }
+
+.cantidad {
+  font-size: 14px;
+  color: var(--gris-texto);
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.vacio {
+  color: var(--gris-texto);
+  text-align: center;
+  padding: 60px 0;
+}
+
+@media (max-width: 768px) {
+  .pagina { grid-template-columns: 1fr; }
+  .filtros { position: static; }
+}
