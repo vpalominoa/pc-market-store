@@ -10,55 +10,202 @@
 .contenido {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 64px;
-  gap: 24px;
+  gap: 16px;
 }
 
 .marca {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--blanco);
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .icono {
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   object-fit: contain;
 }
 
-.nav {
-  display: flex;
-  gap: 8px;
+.categorias {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.enlace {
-  color: rgba(255, 255, 255, 0.85);
-  padding: 6px 14px;
+.btnCategorias {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: var(--blanco);
+  padding: 8px 14px;
   border-radius: var(--radio);
   font-size: 14px;
   font-weight: 500;
-  transition: background 0.2s, color 0.2s;
+  font-family: var(--fuente);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  white-space: nowrap;
 }
 
-.enlace:hover {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--blanco);
+.btnCategorias:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.flecha {
+  font-size: 12px;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  min-width: 220px;
+  overflow: hidden;
+  z-index: 200;
+  animation: fadeDown 0.15s ease;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdownItem {
+  display: block;
+  padding: 11px 18px;
+  font-size: 14px;
+  color: var(--negro);
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.dropdownItem:last-child {
+  border-bottom: none;
+}
+
+.dropdownItem:hover {
+  background: var(--azul-claro);
+  color: var(--azul);
+}
+
+.buscadorWrap {
+  position: relative;
+  flex: 1;
+  max-width: 500px;
+}
+
+.buscador {
+  display: flex;
+  align-items: center;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  overflow: hidden;
+}
+
+.inputBusqueda {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 9px 14px;
+  font-size: 14px;
+  color: var(--negro);
+  background: transparent;
+  font-family: var(--fuente);
+}
+
+.btnBuscar {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--gris-texto);
+  transition: color 0.2s;
+}
+
+.btnBuscar:hover {
+  color: var(--azul);
+}
+
+.sugerencias {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  background: var(--blanco);
+  border-radius: var(--radio);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 200;
+  animation: fadeDown 0.15s ease;
+}
+
+.sugerenciaItem {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--gris-medio);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--fuente);
+  transition: background 0.15s;
+  text-align: left;
+}
+
+.sugerenciaItem:hover {
+  background: var(--gris-claro);
+}
+
+.sugerenciaNombre {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--negro);
+}
+
+.sugerenciaCategoria {
+  font-size: 11px;
+  color: var(--gris-texto);
+  background: var(--gris-claro);
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.sugerenciaVerTodos {
+  width: 100%;
+  background: var(--azul-claro);
+  border: none;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--azul);
+  font-weight: 500;
+  cursor: pointer;
+  font-family: var(--fuente);
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.sugerenciaVerTodos:hover {
+  background: rgba(0, 124, 188, 0.15);
 }
 
 .acciones {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-.bienvenida {
-  font-size: 14px;
-  opacity: 0.9;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .botonCarrito {
@@ -85,34 +232,70 @@
   padding: 0 3px;
 }
 
-.botonSalir {
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--blanco);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 6px 14px;
-  border-radius: var(--radio);
+.usuarioMenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.bienvenida {
   font-size: 13px;
-  font-weight: 500;
-  transition: background 0.2s;
+  opacity: 0.9;
+  white-space: nowrap;
 }
 
-.botonSalir:hover {
-  background: rgba(255, 255, 255, 0.25);
+.menuLinks {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.enlaceAuth {
+.menuEnlace {
   color: rgba(255, 255, 255, 0.85);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  padding: 6px 14px;
   transition: color 0.2s;
 }
 
-.enlaceAuth:hover {
+.menuEnlace:hover {
   color: var(--blanco);
 }
 
+.btnSalir {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--blanco);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 4px 12px;
+  border-radius: var(--radio);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--fuente);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btnSalir:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.btnLogin {
+  background: var(--blanco);
+  color: var(--azul);
+  padding: 8px 18px;
+  border-radius: var(--radio);
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.btnLogin:hover {
+  opacity: 0.9;
+}
+
 @media (max-width: 768px) {
-  .nav { display: none; }
-  .bienvenida { display: none; }
+  .marca span { display: none; }
+  .categorias { display: none; }
+  .buscadorWrap { max-width: 100%; }
 }
