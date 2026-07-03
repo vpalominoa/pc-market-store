@@ -63,7 +63,7 @@ export default function Registro() {
                 type="text"
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
-                placeholder="Victor Palomino"
+                placeholder="Ingresa tu nombre completo"
                 maxLength={100}
                 autoComplete="name"
                 required
