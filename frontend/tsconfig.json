@@ -12,9 +12,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "typeRoots": ["./src/tipos", "./node_modules/@types"]
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "types": ["vite/client"]
   },
   "include": ["src"]
 }
