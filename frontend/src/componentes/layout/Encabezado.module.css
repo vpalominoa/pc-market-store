@@ -233,16 +233,24 @@
 }
 
 .usuarioMenu {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  gap: 14px;
 }
 
 .bienvenida {
   font-size: 13px;
-  opacity: 0.9;
+  font-weight: 600;
+  color: var(--blanco);
   white-space: nowrap;
+  padding: 4px 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s, opacity 0.2s;
+}
+
+.bienvenida:hover {
+  opacity: 0.9;
+  border-bottom-color: rgba(255, 255, 255, 0.6);
 }
 
 .menuLinks {
