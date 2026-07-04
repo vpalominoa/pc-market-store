@@ -157,7 +157,7 @@ export default function Checkout() {
     try {
       await crearPedido(datosEnvio);
       limpiar();
-      navigate('/mis-pedidos', { state: { pedidoExitoso: true } });
+      navigate('/mi-cuenta', { state: { pedidoExitoso: true } });
     } catch (err: any) {
       setError(err.message || 'No se pudo procesar el pedido');
     } finally {

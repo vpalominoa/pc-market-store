@@ -19,7 +19,7 @@ export default function PiePagina() {
         </p>
         <nav className={styles.enlaces}>
           <Link to="/catalogo">Catálogo</Link>
-          <Link to="/mis-pedidos">Mis pedidos</Link>
+          <Link to="/mi-cuenta">Mi cuenta</Link>
         </nav>
         <p className={styles.copyright}>© 2025 PC Market Store. Todos los derechos reservados.</p>
       </div>

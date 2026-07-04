@@ -4,13 +4,14 @@ import Fuse from 'fuse.js';
 import { useAuthStore } from '../../store/autenticacion';
 import { useCarritoStore } from '../../store/carrito';
 import { obtenerProductos, obtenerCategorias } from '../../servicios/productos';
+import { obtenerCarrito } from '../../servicios/carrito';
 import { sanitizarTexto } from '../../utilidades/seguridad';
 import { Producto, Categoria } from '../../tipos';
 import styles from './Encabezado.module.css';
 
 export default function Encabezado() {
   const { usuario, estaAutenticado, cerrarSesion } = useAuthStore();
-  const totalItems = useCarritoStore((s) => s.totalItems);
+  const { totalItems, establecerItems } = useCarritoStore();
   const navigate = useNavigate();
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
@@ -29,6 +30,12 @@ export default function Encabezado() {
     obtenerCategorias().then(setCategorias).catch(() => {});
     obtenerProductos({}).then(setProductos).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    if (estaAutenticado()) {
+      obtenerCarrito().then(establecerItems).catch(() => {});
+    }
+  }, [usuario]);
 
   useEffect(() => {
     if (busqueda.trim().length < 2) {
@@ -155,32 +162,41 @@ export default function Encabezado() {
         </div>
 
         <div className={styles.acciones}>
-          {estaAutenticado() && (
-            <Link to="/carrito" className={styles.botonCarrito} aria-label="Ver carrito">
-              🛒
-              {totalItems() > 0 && (
-                <span className={styles.badge}>
-                  {totalItems() > 99 ? '99+' : totalItems()}
-                </span>
-              )}
-            </Link>
-          )}
-
           {estaAutenticado() ? (
             <div className={styles.usuarioMenu}>
-              <span className={styles.bienvenida}>Hola, {primerNombre}</span>
-              <div className={styles.menuLinks}>
-                <Link to="/mis-pedidos" className={styles.menuEnlace}>Mis pedidos</Link>
-                {usuario?.rol === 'admin' && (
-                  <Link to="/admin" className={styles.menuEnlace}>Panel admin</Link>
+              <Link to="/mi-cuenta" className={styles.bienvenida}>
+                Hola, {primerNombre}
+              </Link>
+
+              <Link to="/carrito" className={styles.botonCarrito} aria-label="Ver carrito">
+                🛒
+                {totalItems() > 0 && (
+                  <span className={styles.badge}>
+                    {totalItems() > 99 ? '99+' : totalItems()}
+                  </span>
                 )}
-                <button className={styles.btnSalir} onClick={handleCerrarSesion}>
-                  Salir
-                </button>
-              </div>
+              </Link>
+
+              {usuario?.rol === 'admin' && (
+                <Link to="/admin" className={styles.menuEnlace}>Panel admin</Link>
+              )}
+
+              <button className={styles.btnSalir} onClick={handleCerrarSesion}>
+                Salir
+              </button>
             </div>
           ) : (
-            <Link to="/login" className={styles.btnLogin}>Ingresar</Link>
+            <>
+              <Link to="/carrito" className={styles.botonCarrito} aria-label="Ver carrito">
+                🛒
+                {totalItems() > 0 && (
+                  <span className={styles.badge}>
+                    {totalItems() > 99 ? '99+' : totalItems()}
+                  </span>
+                )}
+              </Link>
+              <Link to="/login" className={styles.btnLogin}>Ingresar</Link>
+            </>
           )}
         </div>
 

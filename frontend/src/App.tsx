@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Encabezado from './componentes/layout/Encabezado';
 import PiePagina from './componentes/layout/PiePagina';
 import RutaProtegida from './componentes/comunes/RutaProtegida';
@@ -9,7 +9,7 @@ import Catalogo from './paginas/Catalogo';
 import DetalleProducto from './paginas/DetalleProducto';
 import Carrito from './paginas/Carrito';
 import Checkout from './paginas/Checkout';
-import MisPedidos from './paginas/MisPedidos';
+import MiCuenta from './paginas/MiCuenta';
 import Login from './paginas/Login';
 import Registro from './paginas/Registro';
 import NoEncontrado from './paginas/NoEncontrado';
@@ -33,7 +33,8 @@ export default function App() {
           <Route element={<RutaProtegida />}>
             <Route path="/carrito" element={<Carrito />} />
             <Route path="/checkout" element={<Checkout />} />
-            <Route path="/mis-pedidos" element={<MisPedidos />} />
+            <Route path="/mi-cuenta" element={<MiCuenta />} />
+            <Route path="/mis-pedidos" element={<Navigate to="/mi-cuenta" replace />} />
           </Route>
 
           <Route element={<RutaAdmin />}>
