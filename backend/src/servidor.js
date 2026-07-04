@@ -8,6 +8,7 @@ import rutasProductos from './rutas/productos.js';
 import rutasCategorias from './rutas/categorias.js';
 import rutasCarrito from './rutas/carrito.js';
 import rutasPedidos from './rutas/pedidos.js';
+import rutasDirecciones from './rutas/direcciones.js';
 import rutasAdmin from './rutas/admin.js';
 
 dotenv.config();
@@ -31,6 +32,7 @@ app.use('/api/productos', rutasProductos);
 app.use('/api/categorias', rutasCategorias);
 app.use('/api/carrito', rutasCarrito);
 app.use('/api/pedidos', rutasPedidos);
+app.use('/api/direcciones', rutasDirecciones);
 app.use('/api/admin', rutasAdmin);
 
 app.use((req, res) => {

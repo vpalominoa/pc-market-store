@@ -1,5 +1,6 @@
 import api from './api';
 import { validarCantidad } from '../utilidades/seguridad';
+import { DatosEnvio } from '../tipos';
 
 export const obtenerCarrito = async () => {
   const { data } = await api.get('/carrito');
@@ -26,8 +27,8 @@ export const eliminarDelCarrito = async (id: string) => {
   await api.delete(`/carrito/${id}`);
 };
 
-export const crearPedido = async () => {
-  const { data } = await api.post('/pedidos');
+export const crearPedido = async (datosEnvio: DatosEnvio) => {
+  const { data } = await api.post('/pedidos', datosEnvio);
   return data;
 };
 
@@ -35,3 +36,4 @@ export const obtenerMisPedidos = async () => {
   const { data } = await api.get('/pedidos/mis-pedidos');
   return data;
 };
+

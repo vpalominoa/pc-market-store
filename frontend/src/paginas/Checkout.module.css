@@ -16,11 +16,168 @@
   align-items: start;
 }
 
-.productos {
+.pasos {
   background: var(--blanco);
   border-radius: var(--radio);
   box-shadow: var(--sombra);
-  padding: 28px;
+  overflow: hidden;
+}
+
+.paso {
+  border-bottom: 1px solid var(--gris-medio);
+}
+
+.paso:last-child {
+  border-bottom: none;
+}
+
+.pasoCabecera {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.pasoCabecera:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.pasoNumero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gris-claro);
+  color: var(--gris-texto);
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.pasoNumeroActivo {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+.pasoTitulo {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pasoContenido {
+  padding: 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.datoLinea {
+  font-size: 14px;
+}
+
+.datoLabel {
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.campo label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gris-texto);
+}
+
+.campo input {
+  padding: 10px 12px;
+  border: 1px solid var(--gris-medio);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: var(--fuente);
+}
+
+.campo input:focus {
+  outline: none;
+  border-color: var(--azul);
+}
+
+.campoFila {
+  display: flex;
+  gap: 16px;
+}
+
+.metodoOpcionCaja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  background: var(--gris-claro);
+  border-radius: 8px;
+}
+
+.metodoOpcionCaja label {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.metodoNombre {
+  font-weight: 600;
+}
+
+.metodoDetalle {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gris-texto);
+}
+
+.listaDirecciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btnAgregarDireccion {
+  align-self: flex-start;
+  background: none;
+  border: none;
+  color: var(--azul);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+.btnAgregarDireccion:hover {
+  text-decoration: underline;
+}
+
+.checkboxLinea {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--gris-texto);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .campoFila { flex-direction: column; }
 }
 
 .subtitulo {

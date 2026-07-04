@@ -69,3 +69,25 @@ export interface FiltrosProducto {
   orden?: 'precio_asc' | 'precio_desc';
   busqueda?: string;
 }
+
+export interface Pedido {
+  id: string;
+  usuario_id: string;
+  total: number;
+  estado: EstadoPedido;
+  tiempo_venta_id: string;
+  creado_en: string;
+  items_pedido: ItemPedido[];
+  tiempo_ventas: TiempoVenta;
+  direccion?: string;
+  ciudad?: string;
+  referencia?: string;
+  telefono?: string;
+}
+
+export interface DatosEnvio {
+  direccion: string;
+  ciudad: string;
+  referencia?: string;
+  telefono: string;
+}
