@@ -75,3 +75,13 @@ export const actualizarEstado = async (id, estado) => {
   if (error) throw new Error(error.message);
   return data;
 };
+
+export const obtenerPorId = async (id) => {
+  const { data, error } = await supabase
+    .from('pedidos')
+    .select('*, items_pedido(*, productos(stock))')
+    .eq('id', id)
+    .single();
+  if (error) throw new Error(error.message);
+  return data;
+};

@@ -58,5 +58,19 @@ export const cambiarEstado = async (id, estado) => {
   if (!ESTADOS_VALIDOS.includes(estado)) {
     throw new Error('Estado no válido');
   }
+
+  const pedidoActual = await repositorioPedidos.obtenerPorId(id);
+
+  const seEstaCancelando = estado === 'cancelado' && pedidoActual.estado !== 'cancelado';
+
+  if (seEstaCancelando) {
+    for (const item of pedidoActual.items_pedido) {
+      await supabase
+        .from('productos')
+        .update({ stock: item.productos.stock + item.cantidad })
+        .eq('id', item.producto_id);
+    }
+  }
+
   return await repositorioPedidos.actualizarEstado(id, estado);
 };
