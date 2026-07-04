@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { obtenerProducto } from '../servicios/productos';
-import { agregarAlCarrito } from '../servicios/carrito';
+import { agregarAlCarrito, obtenerCarrito } from '../servicios/carrito';
 import { useAuthStore } from '../store/autenticacion';
+import { useCarritoStore } from '../store/carrito';
 import { Producto } from '../tipos';
 import { formatearPrecio, esUrlSegura, validarCantidad } from '../utilidades/seguridad';
 import styles from './DetalleProducto.module.css';
@@ -11,6 +12,7 @@ export default function DetalleProducto() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const estaAutenticado = useAuthStore((s) => s.estaAutenticado);
+  const establecerItems = useCarritoStore((s) => s.establecerItems);
 
   const [producto, setProducto] = useState<Producto | null>(null);
   const [cantidad, setCantidad] = useState(1);
@@ -56,6 +58,7 @@ export default function DetalleProducto() {
       await agregarAlCarrito(producto.id, cantidad, producto.stock);
       setMensajeExito('Producto agregado al carrito');
       setTimeout(() => setMensajeExito(''), 3000);
+      obtenerCarrito().then(establecerItems).catch(() => {});
     } catch (err: any) {
       setError(err.message || 'No se pudo agregar al carrito');
     } finally {
