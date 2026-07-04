@@ -97,6 +97,14 @@
   color: var(--azul);
 }
 
+.buscadorMovilContenedor {
+  display: contents;
+}
+
+.btnBuscarMovil {
+  display: none;
+}
+
 .buscadorWrap {
   position: relative;
   flex: 1;
@@ -305,5 +313,55 @@
 @media (max-width: 768px) {
   .marca span { display: none; }
   .categorias { display: none; }
-  .buscadorWrap { max-width: 100%; }
+
+  .buscadorWrap {
+    display: none;
+  }
+
+  .buscadorWrap.buscadorMovilAbierto {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-width: none;
+    padding: 10px 16px 14px;
+    background: var(--azul);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .btnBuscarMovil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--blanco);
+    font-size: 19px;
+    padding: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .contenido {
+    gap: 8px;
+  }
+
+  .acciones {
+    gap: 8px;
+  }
+
+  .usuarioMenu {
+    gap: 8px;
+  }
+
+  .bienvenida {
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (max-width: 400px) {
+  .menuEnlace { display: none; }
 }

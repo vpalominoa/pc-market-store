@@ -20,6 +20,7 @@ export default function Encabezado() {
   const [sugerencias, setSugerencias] = useState<Producto[]>([]);
   const [mostrarDropdownCat, setMostrarDropdownCat] = useState(false);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
+  const [mostrarBusquedaMovil, setMostrarBusquedaMovil] = useState(false);
   const busquedaRef = useRef<HTMLDivElement>(null);
   const categoriasRef = useRef<HTMLDivElement>(null);
 
@@ -59,6 +60,7 @@ export default function Encabezado() {
     const handleClickFuera = (e: MouseEvent) => {
       if (busquedaRef.current && !busquedaRef.current.contains(e.target as Node)) {
         setMostrarSugerencias(false);
+        setMostrarBusquedaMovil(false);
       }
       if (categoriasRef.current && !categoriasRef.current.contains(e.target as Node)) {
         setMostrarDropdownCat(false);
@@ -72,12 +74,14 @@ export default function Encabezado() {
     e.preventDefault();
     if (!busqueda.trim()) return;
     setMostrarSugerencias(false);
+    setMostrarBusquedaMovil(false);
     navigate(`/catalogo?busqueda=${encodeURIComponent(busqueda.trim())}`);
     setBusqueda('');
   };
 
   const handleSeleccionarSugerencia = (producto: Producto) => {
     setMostrarSugerencias(false);
+    setMostrarBusquedaMovil(false);
     setBusqueda('');
     navigate(`/producto/${producto.id}`);
   };
@@ -124,44 +128,59 @@ export default function Encabezado() {
           )}
         </div>
 
-        <div className={styles.buscadorWrap} ref={busquedaRef}>
-          <form onSubmit={handleBuscar} className={styles.buscador}>
-            <input
-              type="text"
-              placeholder="Buscar productos..."
-              value={busqueda}
-              onChange={(e) => setBusqueda(e.target.value)}
-              maxLength={100}
-              className={styles.inputBusqueda}
-              onFocus={() => sugerencias.length > 0 && setMostrarSugerencias(true)}
-            />
-            <button type="submit" className={styles.btnBuscar} aria-label="Buscar">
-              🔍
-            </button>
-          </form>
+        <div className={styles.buscadorMovilContenedor} ref={busquedaRef}>
+          <button
+            type="button"
+            className={styles.btnBuscarMovil}
+            onClick={() => setMostrarBusquedaMovil((v) => !v)}
+            aria-label="Buscar productos"
+          >
+            🔍
+          </button>
 
-          {mostrarSugerencias && sugerencias.length > 0 && (
-            <div className={styles.sugerencias}>
-              {sugerencias.map((p) => (
-                <button
-                  key={p.id}
-                  className={styles.sugerenciaItem}
-                  onClick={() => handleSeleccionarSugerencia(p)}
-                >
-                  <span className={styles.sugerenciaNombre}>{p.nombre}</span>
-                  <span className={styles.sugerenciaCategoria}>
-                    {p.categorias?.nombre}
-                  </span>
-                </button>
-              ))}
-              <button
-                className={styles.sugerenciaVerTodos}
-                onClick={handleBuscar as any}
-              >
-                Ver todos los resultados para "{busqueda}"
+          <div
+            className={`${styles.buscadorWrap} ${mostrarBusquedaMovil ? styles.buscadorMovilAbierto : ''
+              }`}
+          >
+            <form onSubmit={handleBuscar} className={styles.buscador}>
+              <input
+                type="text"
+                placeholder="Buscar productos..."
+                value={busqueda}
+                onChange={(e) => setBusqueda(e.target.value)}
+                maxLength={100}
+                className={styles.inputBusqueda}
+                onFocus={() => sugerencias.length > 0 && setMostrarSugerencias(true)}
+                autoFocus={mostrarBusquedaMovil}
+              />
+              <button type="submit" className={styles.btnBuscar} aria-label="Buscar">
+                🔍
               </button>
-            </div>
-          )}
+            </form>
+
+            {mostrarSugerencias && sugerencias.length > 0 && (
+              <div className={styles.sugerencias}>
+                {sugerencias.map((p) => (
+                  <button
+                    key={p.id}
+                    className={styles.sugerenciaItem}
+                    onClick={() => handleSeleccionarSugerencia(p)}
+                  >
+                    <span className={styles.sugerenciaNombre}>{p.nombre}</span>
+                    <span className={styles.sugerenciaCategoria}>
+                      {p.categorias?.nombre}
+                    </span>
+                  </button>
+                ))}
+                <button
+                  className={styles.sugerenciaVerTodos}
+                  onClick={handleBuscar as any}
+                >
+                  Ver todos los resultados para "{busqueda}"
+                </button>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className={styles.acciones}>
