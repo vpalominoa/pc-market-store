@@ -30,12 +30,28 @@ export default function DetalleProducto() {
       .finally(() => setCargando(false));
   }, [id]);
 
-  const cambiarCantidad = (delta: number) => {
+const cambiarCantidad = (delta: number) => {
     if (!producto) return;
     const nueva = cantidad + delta;
     if (nueva >= 1 && nueva <= producto.stock) {
       setCantidad(nueva);
     }
+  };
+
+  const handleCantidadInput = (valor: string) => {
+    if (!producto) return;
+
+    if (valor === '') {
+      setCantidad(1);
+      return;
+    }
+
+    const soloDigitos = valor.replace(/[^0-9]/g, '');
+    if (!soloDigitos) return;
+
+    const numero = parseInt(soloDigitos, 10);
+    const acotado = Math.min(Math.max(numero, 1), producto.stock);
+    setCantidad(acotado);
   };
 
   const handleAgregar = async () => {
@@ -107,7 +123,17 @@ export default function DetalleProducto() {
             <div className={styles.acciones}>
               <div className={styles.cantidad}>
                 <button onClick={() => cambiarCantidad(-1)} disabled={cantidad <= 1} aria-label="Disminuir cantidad">−</button>
-                <span>{cantidad}</span>
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  className={styles.inputCantidad}
+                  value={cantidad}
+                  onChange={(e) => handleCantidadInput(e.target.value)}
+                  onBlur={() => {
+                    if (!cantidad || cantidad < 1) setCantidad(1);
+                  }}
+                  aria-label="Cantidad"
+                />
                 <button onClick={() => cambiarCantidad(1)} disabled={cantidad >= producto.stock} aria-label="Aumentar cantidad">+</button>
               </div>
               <button className="btn-primario" onClick={handleAgregar} disabled={agregando}>

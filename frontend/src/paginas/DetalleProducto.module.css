@@ -11,6 +11,7 @@
   margin-bottom: 28px;
   padding: 0;
   transition: opacity 0.2s;
+  padding-top: 25px;
 }
 
 .volver:hover { opacity: 0.7; }
@@ -107,11 +108,24 @@
 
 .cantidad button:disabled { color: var(--gris-medio); }
 
-.cantidad span {
+.inputCantidad {
   font-size: 16px;
   font-weight: 600;
-  min-width: 24px;
+  width: 40px;
   text-align: center;
+  border: none;
+  background: transparent;
+  color: var(--negro);
+  font-family: var(--fuente);
+  outline: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.inputCantidad::-webkit-outer-spin-button,
+.inputCantidad::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .exito {

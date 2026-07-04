@@ -21,6 +21,7 @@ export default function Encabezado() {
   const [mostrarDropdownCat, setMostrarDropdownCat] = useState(false);
   const [mostrarSugerencias, setMostrarSugerencias] = useState(false);
   const busquedaRef = useRef<HTMLDivElement>(null);
+  const categoriasRef = useRef<HTMLDivElement>(null);
 
   const primerNombre = usuario?.nombre
     ? sanitizarTexto(usuario.nombre.split(' ')[0])
@@ -58,6 +59,9 @@ export default function Encabezado() {
     const handleClickFuera = (e: MouseEvent) => {
       if (busquedaRef.current && !busquedaRef.current.contains(e.target as Node)) {
         setMostrarSugerencias(false);
+      }
+      if (categoriasRef.current && !categoriasRef.current.contains(e.target as Node)) {
+        setMostrarDropdownCat(false);
       }
     };
     document.addEventListener('mousedown', handleClickFuera);
@@ -97,12 +101,11 @@ export default function Encabezado() {
           <span>PC Market Store</span>
         </Link>
 
-        <div
-          className={styles.categorias}
-          onMouseEnter={() => setMostrarDropdownCat(true)}
-          onMouseLeave={() => setMostrarDropdownCat(false)}
-        >
-          <button className={styles.btnCategorias}>
+        <div className={styles.categorias} ref={categoriasRef}>
+          <button
+            className={styles.btnCategorias}
+            onClick={() => setMostrarDropdownCat((v) => !v)}
+          >
             Categorías <span className={styles.flecha}>▾</span>
           </button>
           {mostrarDropdownCat && (
