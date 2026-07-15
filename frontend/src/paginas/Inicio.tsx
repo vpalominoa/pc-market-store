@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { obtenerProductos, obtenerCategorias } from '../servicios/productos';
 import { Producto, Categoria } from '../tipos';
 import TarjetaProducto from '../componentes/comunes/TarjetaProducto';
+import SeoHead from '../componentes/comunes/SeoHead';
 import styles from './Inicio.module.css';
 
 export default function Inicio() {
@@ -11,15 +12,29 @@ export default function Inicio() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    obtenerProductos({})
-      .then((data) => setDestacados(data.slice(0, 8)))
-      .catch(() => setError('No se pudieron cargar los productos'));
-
-    obtenerCategorias().then(setCategorias).catch(() => {});
+    // Vercel Best Practice: async-parallel
+    Promise.allSettled([
+      obtenerProductos({}),
+      obtenerCategorias()
+    ]).then(([productosRes, categoriasRes]) => {
+      if (productosRes.status === 'fulfilled') {
+        setDestacados(productosRes.value.slice(0, 8));
+      } else {
+        setError('No se pudieron cargar los productos');
+      }
+      
+      if (categoriasRes.status === 'fulfilled') {
+        setCategorias(categoriasRes.value);
+      }
+    });
   }, []);
 
   return (
     <div>
+      <SeoHead 
+        title="Inicio" 
+        description="Componentes para PC de gama media y alta. Procesadores, tarjetas de video, RAM y más."
+      />
       <section className={styles.hero}>
         <div className={`contenedor ${styles.heroContenido}`}>
           <h1 className={styles.heroTitulo}>

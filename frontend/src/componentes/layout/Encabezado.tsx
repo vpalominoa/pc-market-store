@@ -93,33 +93,37 @@ export default function Encabezado() {
 
   return (
     <header className={styles.encabezado}>
-      <div className={`contenedor ${styles.contenido}`}>
+      <nav className={`contenedor ${styles.contenido}`} aria-label="Navegación principal">
 
         <Link to="/" className={styles.marca}>
           <img
             src="/icono-tienda.png"
-            alt="PC Market Store"
+            alt=""
+            aria-hidden="true"
             className={styles.icono}
             referrerPolicy="no-referrer"
           />
-          <span>PC Market Store</span>
+          <span className={styles.textoMarca}>PC Market Store</span>
         </Link>
 
         <div className={styles.categorias} ref={categoriasRef}>
           <button
             className={styles.btnCategorias}
             onClick={() => setMostrarDropdownCat((v) => !v)}
+            aria-expanded={mostrarDropdownCat}
+            aria-controls="dropdown-categorias"
           >
-            Categorías <span className={styles.flecha}>▾</span>
+            Categorías <span className={styles.flecha} aria-hidden="true">▾</span>
           </button>
           {mostrarDropdownCat && (
-            <div className={styles.dropdown}>
+            <div id="dropdown-categorias" className={styles.dropdown} role="menu">
               {categorias.map((cat) => (
                 <Link
                   key={cat.id}
                   to={`/catalogo?categoria=${encodeURIComponent(cat.id)}`}
                   className={styles.dropdownItem}
                   onClick={() => setMostrarDropdownCat(false)}
+                  role="menuitem"
                 >
                   {cat.nombre}
                 </Link>
@@ -133,14 +137,16 @@ export default function Encabezado() {
             type="button"
             className={styles.btnBuscarMovil}
             onClick={() => setMostrarBusquedaMovil((v) => !v)}
-            aria-label="Buscar productos"
+            aria-label={mostrarBusquedaMovil ? "Cerrar búsqueda" : "Buscar productos"}
+            aria-expanded={mostrarBusquedaMovil}
+            aria-controls="buscador-movil"
           >
             🔍
           </button>
 
           <div
-            className={`${styles.buscadorWrap} ${mostrarBusquedaMovil ? styles.buscadorMovilAbierto : ''
-              }`}
+            id="buscador-movil"
+            className={`${styles.buscadorWrap} ${mostrarBusquedaMovil ? styles.buscadorMovilAbierto : ''}`}
           >
             <form onSubmit={handleBuscar} className={styles.buscador}>
               <input
@@ -222,7 +228,7 @@ export default function Encabezado() {
           )}
         </div>
 
-      </div>
+      </nav>
     </header>
   );
 }

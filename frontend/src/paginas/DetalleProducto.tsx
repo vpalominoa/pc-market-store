@@ -6,6 +6,7 @@ import { useAuthStore } from '../store/autenticacion';
 import { useCarritoStore } from '../store/carrito';
 import { Producto } from '../tipos';
 import { formatearPrecio, esUrlSegura, validarCantidad } from '../utilidades/seguridad';
+import SeoHead from '../componentes/comunes/SeoHead';
 import styles from './DetalleProducto.module.css';
 
 export default function DetalleProducto() {
@@ -30,7 +31,7 @@ export default function DetalleProducto() {
       .finally(() => setCargando(false));
   }, [id]);
 
-const cambiarCantidad = (delta: number) => {
+  const cambiarCantidad = (delta: number) => {
     if (!producto) return;
     const nueva = cantidad + delta;
     if (nueva >= 1 && nueva <= producto.stock) {
@@ -91,6 +92,10 @@ const cambiarCantidad = (delta: number) => {
 
   return (
     <div className={`contenedor ${styles.pagina}`}>
+      <SeoHead 
+        title={producto.nombre} 
+        description={producto.descripcion || `Compra ${producto.nombre} en PC Market Store.`}
+      />
       <button onClick={() => navigate(-1)} className={styles.volver}>← Volver</button>
 
       <div className={styles.grid}>

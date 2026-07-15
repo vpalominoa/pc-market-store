@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 import { Producto } from '../../tipos';
 import { formatearPrecio, esUrlSegura } from '../../utilidades/seguridad';
@@ -7,7 +8,7 @@ interface Props {
   producto: Producto;
 }
 
-export default function TarjetaProducto({ producto }: Props) {
+const TarjetaProducto = memo(function TarjetaProducto({ producto }: Props) {
   const imagenSegura = esUrlSegura(producto.imagen_url) ? producto.imagen_url : '/placeholder.png';
 
   return (
@@ -36,4 +37,6 @@ export default function TarjetaProducto({ producto }: Props) {
       </div>
     </Link>
   );
-}
+});
+
+export default TarjetaProducto;

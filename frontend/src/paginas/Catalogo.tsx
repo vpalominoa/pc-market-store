@@ -4,6 +4,7 @@ import { obtenerProductos, obtenerCategorias } from '../servicios/productos';
 import { Producto, Categoria, FiltrosProducto } from '../tipos';
 import { sanitizarTexto } from '../utilidades/seguridad';
 import TarjetaProducto from '../componentes/comunes/TarjetaProducto';
+import SeoHead from '../componentes/comunes/SeoHead';
 import styles from './Catalogo.module.css';
 
 const ORDENES_VALIDOS = ['precio_asc', 'precio_desc'] as const;
@@ -47,8 +48,14 @@ export default function Catalogo() {
     setSearchParams(params);
   };
 
+  const nombreCategoria = categorias.find(c => c.id === categoriaActual)?.nombre || 'Todos los productos';
+
   return (
     <div className={`contenedor ${styles.pagina}`}>
+      <SeoHead 
+        title={`Catálogo - ${nombreCategoria}`} 
+        description="Explora nuestro catálogo de componentes para armar la PC de tus sueños." 
+      />
       <aside className={styles.filtros}>
         <h2 className={styles.tituloFiltros}>Filtros</h2>
 
