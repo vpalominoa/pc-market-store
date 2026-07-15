@@ -33,6 +33,19 @@
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
+
+  /* Legacy Spanish Variables */
+  --azul: var(--blue);
+  --azul-hover: var(--blue-hover);
+  --azul-claro: var(--blue-dim);
+  --blanco: #ffffff;
+  --negro: var(--text-main);
+  --fondo: var(--bg-color);
+  --gris-claro: #f1f5f9;
+  --gris-medio: var(--border);
+  --gris-texto: var(--text-muted);
+  --radio: var(--radius-sm);
+  --fuente: var(--font-body);
 }
 
 html {
