@@ -14,6 +14,7 @@ import rutasAdmin from './rutas/admin.js';
 dotenv.config();
 
 const app = express();
+app.set('trust proxy', 1);
 const PUERTO = process.env.PORT || 3000;
 
 app.use(helmet());
